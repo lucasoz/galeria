@@ -1,0 +1,15 @@
+#contenedor {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#menunavegacion{
+	width: 70%;
+	margin: 0 auto;
+}
+
+#configfooter{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
