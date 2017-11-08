@@ -1,0 +1,7 @@
+1. ir a la carpeta donde se ubica el proyecto
+2. git config --global user.email "luemunozmo@unal.edu.co"
+3. git config --global user.name "lucasoz"
+4. git add .
+5. git commit -m 'Descripcion'
+6. git remote add origin https://github.com/lucasoz/galeria.git
+7. git push -u origin master
