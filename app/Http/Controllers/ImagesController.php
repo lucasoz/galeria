@@ -137,4 +137,11 @@ class ImagesController extends Controller
         return redirect()->route('admin.albumes.index');
         //$img_delete = album_image::where('id_image', '')->where('id_album', '')->where('ordenNumber', '')->get();
     }
+
+    public function ChangeOrderNumer(int $id_image,int $id_album)
+    {
+        $images = DB::table('image')->join('album_image' , 'image.id', '=', 'album_image.id_image')->select('image.*', 'album_image.*')->where('id_album', $id)->get();
+        $album = Album::find($id);
+        dd($images);
+    }
 }

@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function(){
 		'uses' => 'ImagesController@destroy',
 		'as'   =>'admin.images.destroy'
 		]);
+	Route::get('images/ChangeOrderNumber',[
+		'uses' => 'ImagesController@ChangeOrderNumber',
+		'as'   =>'admin.images.ChangeOrderNumber'
+		]);
 });
 
 
