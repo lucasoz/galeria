@@ -2,7 +2,8 @@
 @section('title', 'Mis Albumes')
 
 @section('content')
-	<a href="{{ route('admin.images.create') }}" class="btn btn-info">Añadir imagen</a><hr>
+	<a href="{{ route('admin.albumes.create') }}" class="btn btn-info">Crear Album</a>
+	<a href="{{ route('admin.images.create') }}" class="btn btn-info">Añadir imagen</a>	<hr>
 	<table class="table table.striped">
 		<thead>
 			<th>Nombre</th>

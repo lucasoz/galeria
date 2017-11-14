@@ -2,6 +2,7 @@
 @section('title', 'Lista de usuarios')
 
 @section('content')
+	<a href="{{ route('admin.users.create') }}" class="btn btn-info">Crear Usuario</a><hr>
 	<table class="table table.striped">
 		<thead>
 			<th>Avatar</th>
