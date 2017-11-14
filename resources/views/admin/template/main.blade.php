@@ -37,5 +37,6 @@
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 	<script src="{{ asset ('plugins/chosen/chosen.jquery.js') }}"></script>
 	@yield('js')
+	
 </body>
 </html>
