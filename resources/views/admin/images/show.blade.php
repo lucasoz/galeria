@@ -3,6 +3,7 @@
 @section('title', 'Album: '.$album->name)
 
 @section('content')
+<a href="{{ route('admin.images.create') }}" class="btn btn-info">Añadir imagen</a><hr>
 	<div class="row">
 		@foreach($images as $image)
 			<div class="col-md-4">

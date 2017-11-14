@@ -10,4 +10,11 @@ class album_image extends Model
 
     protected $fillable = ['orderNumber','id_image','id_album'];
     //fillable son los campos que quiero que traiga de la BD
+
+    public function comments(){
+
+    	return $this -> hasMany('App\Comment')->withTimestamps();
+    	
+    }
+
 }

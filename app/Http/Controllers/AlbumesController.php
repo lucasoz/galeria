@@ -34,7 +34,7 @@ class AlbumesController extends Controller
         else{
             $user_id = \Auth::user()->id;
             //$albumes = Album::where('user_id', $user_id)->orderBy('id', 'ASC')->get()->lists('name', 'id');
-            $albumes = DB::table('users')->join('album' , 'users.id', '=', 'album.user_id')->select('users.*', 'album.*')->where('type', '=', 'member')->paginate(5);
+            $albumes = DB::table('users')->join('album' , 'users.id', '=', 'album.user_id')->select('users.*','users.name as nameuser','album.*')->where('type', '=', 'member')->paginate(5);
         }
         return view('admin.albumes.index', ['albumes' => $albumes]);
     }

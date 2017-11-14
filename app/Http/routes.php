@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function(){
 		'as'   =>'admin.images.ChangeOrderNumber'
 		]);
 
+	
 	Route::resource('images', 'ImagesController');
 	Route::post('images/Number',[
 		'uses' => 'ImagesController@Number',

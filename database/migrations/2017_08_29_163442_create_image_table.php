@@ -27,7 +27,7 @@ class CreateImageTable extends Migration
 
         //album & image = album_image
         Schema::create('album_image',function(Blueprint $table){
-            $table->integer('orderNumber');
+            $table->integer('orderNumber')->unsigned();
             $table->integer('id_image')->unsigned();
             $table->integer('id_album')->unsigned();
 
