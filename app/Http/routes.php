@@ -42,9 +42,17 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function(){
 		'uses' => 'ImagesController@destroy',
 		'as'   =>'admin.images.destroy'
 		]);
-	Route::get('images/ChangeOrderNumber',[
+	
+	Route::resource('images', 'ImagesController');
+	Route::get('images/ChangeOrderNumber/{id_album}/{id_image}',[
 		'uses' => 'ImagesController@ChangeOrderNumber',
 		'as'   =>'admin.images.ChangeOrderNumber'
+		]);
+
+	Route::resource('images', 'ImagesController');
+	Route::post('images/Number',[
+		'uses' => 'ImagesController@Number',
+		'as'   =>'admin.images.Number'
 		]);
 });
 

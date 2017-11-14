@@ -89,7 +89,7 @@ class ImagesController extends Controller
      */
     public function show($id)//aqui se muestran las imagenes
     {
-        $images = DB::table('image')->join('album_image' , 'image.id', '=', 'album_image.id_image')->select('image.*', 'album_image.*')->where('id_album', $id)->get();
+        $images = DB::table('image')->join('album_image' , 'image.id', '=', 'album_image.id_image')->select('image.*', 'album_image.*')->where('id_album', $id)->orderBy('orderNumber')->get();
         $album = Album::find($id);
         return view('admin.images.show', ['images' => $images, 'album' => $album]);
     }
@@ -138,10 +138,34 @@ class ImagesController extends Controller
         //$img_delete = album_image::where('id_image', '')->where('id_album', '')->where('ordenNumber', '')->get();
     }
 
-    public function ChangeOrderNumer(int $id_image,int $id_album)
+    public function ChangeOrderNumber($id_album, $id_image)
     {
-        $images = DB::table('image')->join('album_image' , 'image.id', '=', 'album_image.id_image')->select('image.*', 'album_image.*')->where('id_album', $id)->get();
-        $album = Album::find($id);
-        dd($images);
+        $numeros = DB::table('album_image')->where('id_album',$id_album)->orderBy('orderNumber', 'ASC')->lists('orderNumber', 'orderNumber', 'id_album');
+        return view('admin.images.ordernumber', ['image' => $id_image, 'album' => $id_album, 'numeros' => $numeros]);
+    }
+
+    public function Number(Request $request)
+    {
+        $image = $request->idi;//id imagen
+        $album = $request->ida;//id album
+        $numeron = $request->numeros_disponibles;//numero nuevo
+        $numerov = DB::table('album_image')->select('orderNumber')->where('id_album',$album)->where('id_image',$image)->get();//numero viejo
+        //hasta aquí está bueno
+        $cantidad = DB::table('album_image')->where('id_album',$album)->count();
+        
+        
+
+        DB::table('album_image')->where('id_album', $album)->where('orderNumber',$numeron[0])->update(['orderNumber' => $numerov[0]->orderNumber + $cantidad]);
+
+        DB::table('album_image')->where('id_album', $album)->where('orderNumber',$numerov[0]->orderNumber)->update(['orderNumber' => $numeron[0] + $cantidad]);
+
+        DB::table('album_image')->where('id_album', $album)->where('orderNumber',$numeron[0] + $cantidad)->update(['orderNumber' => $numeron[0]]);
+
+        DB::table('album_image')->where('id_album', $album)->where('orderNumber',$numerov[0]->orderNumber + $cantidad)->update(['orderNumber' => $numerov[0]->orderNumber]);
+        
+        $image1 = Image::find($image);
+        Flash::warning('La imagen '.$image1->title.' ha sido modificada con exito!');
+        return redirect()->route('admin.albumes.index');
+
     }
 }

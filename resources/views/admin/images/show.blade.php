@@ -3,9 +3,6 @@
 @section('title', 'Album: '.$album->name)
 
 @section('content')
-
-	<a href="{{ route('admin.images.create') }}" class="btn btn-info">Añadir imagen</a><hr>
-
 	<div class="row">
 		@foreach($images as $image)
 			<div class="col-md-4">
@@ -21,8 +18,8 @@
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
 							</a>
 							@endif
-							<!-- <a href="{{ route('admin.images.ChangeOrderNumber', $image->id, $album->id)}}" class="btn btn-danger"> 
-							{{$image->orderNumber}}</a> -->
+							<a href="{{ route('admin.images.ChangeOrderNumber', [$album->id, $image->id])}}" class="btn btn-danger">
+							{{$image->orderNumber}}</a>
 						</div>
 					</div>
 				</div>

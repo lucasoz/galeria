@@ -1,20 +1,22 @@
 @extends('admin.template.main')
 
-@section('title', 'Editar Numero de Secuencia ' . $image->title)
+@section('title', 'Editar Numero de Orden')
 
 @section('content')
 
-	{!! Form::open(['route' => ['admin.images.update', $image], 'method' => 'PUT']) !!}
+	{!! Form::open(['route' => ['admin.images.Number'], 'method' => 'POST']) !!}
 		<div class="form-group">
-			{!! Form::label('description', 'Secuencia') !!}
-			{!! Form::text('description',$image->description, ['class'=>'form-control',])!!}
+			{!! Form::hidden('ida',$album, ['class'=>'form-control',])!!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('comments', 'Secuencia a cambiar ') !!}
-			{!! Form::text('comments',$image->commets, ['class'=>'form-control',])!!}
+			{!! Form::hidden('idi',$image, ['class'=>'form-control',])!!}
 		</div>
 		<div class="form-group">
-			{!! Form::submit('Terminar Edición', ['class' => 'btn btn-primary'])!!}
+			{!! Form::label('numero_nuevo', 'Numero Nuevo') !!}
+			{!! Form::select('numeros_disponibles[]', $numeros, null, ['class' => 'form-control', 'required'])!!}
+		</div>
+		<div class="form-group">
+			{!! Form::submit('Modificar orden', ['class' => 'btn btn-primary'])!!}
 		</div>
 	{!! Form::close() !!}
 @endsection
