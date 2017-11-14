@@ -3,7 +3,7 @@
 @section('title', 'Album: '.$album->name)
 
 @section('content')
-	<a href="/galeria/resources/views/admin/images/numero/index.php" class="btn btn-info">Cambiar Orden</a>
+
 	<a href="{{ route('admin.images.create') }}" class="btn btn-info">Añadir imagen</a><hr>
 
 	<div class="row">
