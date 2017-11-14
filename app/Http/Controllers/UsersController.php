@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->paginate(3);
+        $users = User::obtenerUsuarios();
         return view('admin.users.index', ['users' => $users]); 
     }
 
@@ -48,10 +48,7 @@ class UsersController extends Controller
     public function store(UserRequest $request)
     {
         //$request viene la información recibida del formulario
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-        Flash::success("Se ha registrado ".$user->name. " de forma exitosa");
+        User::almacenarUsuario($request);
         return redirect()->route('admin.users.index');
     }
 
@@ -87,15 +84,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        //también se puede usar $user->fill($request->all());
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->nickname = $request->nickname;
-        $user->avatar = $request->avatar;
-        $user->type = $request->type;
-        $user->save();
-        Flash::warning('El usuario '.$user->name.' ha sido editado con exito!');
+        User::actualizarUsuario($request,$id);
         return redirect()->route('admin.users.index');
     }
 
@@ -107,10 +96,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        
-        Flash::error('El usuario '.$user->name.' se borro de forma exitosa');
+        User::borrar($id);
         return redirect()->route('admin.users.index');
     }
 }

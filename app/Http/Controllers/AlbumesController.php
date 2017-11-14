@@ -19,23 +19,8 @@ class AlbumesController extends Controller
      */
     public function index()
     {
-        
-        /*$albumes = Album::orderBy('id', 'DESC')->paginate(5);
-        $albumes->each(function($albumes){
-            $albumes->user;
-        });*/
-        //dd($albumes);
-        if(\Auth::user()->type == "admin"){
-            $albumes = DB::table('users')->join('album' , 'users.id', '=', 'album.user_id')->select('users.*', 'users.name as nameuser', 'album.*')->paginate(5);
-        }
-        elseif(\Auth::user()->type == "premium"){
-            $albumes = DB::table('users')->join('album' , 'users.id', '=', 'album.user_id')->select('users.*', 'users.name as nameuser', 'album.*')->where('type', '=', 'member')->orWhere('type', '=', 'premium')->paginate(5);
-        }
-        else{
-            $user_id = \Auth::user()->id;
-            //$albumes = Album::where('user_id', $user_id)->orderBy('id', 'ASC')->get()->lists('name', 'id');
-            $albumes = DB::table('users')->join('album' , 'users.id', '=', 'album.user_id')->select('users.*','users.name as nameuser','album.*')->where('type', '=', 'member')->paginate(5);
-        }
+        $usuario = \Auth::user();
+        $albumes = Album::traerAlbumes($usuario);
         return view('admin.albumes.index', ['albumes' => $albumes]);
     }
 
@@ -57,11 +42,7 @@ class AlbumesController extends Controller
      */
     public function store(Request $request)
     {
-        $album = new Album($request->all());
-        $album->user_id = \Auth::user()->id;
-        $album->save();
-
-        Flash::success('El album ' . $album->name . ' ha sido creado con exito!');
+        Album::crearAlbum($request);
         return redirect()->route('admin.albumes.index');
     }
 
@@ -97,11 +78,7 @@ class AlbumesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $album = Album::find($id);
-        $album->name = $request->name;
-        $album->description = $request->description;
-        $album->save();
-        Flash::warning('El album '.$album->name.' ha sido editado con exito!');
+        Album::actualizarAlbum($request,$id);
         return redirect()->route('admin.albumes.index');
     }
 
@@ -113,9 +90,7 @@ class AlbumesController extends Controller
      */
     public function destroy($id)
     {
-        $album = Album::find($id);
-        $album->delete();
-        Flash::error('El album '.$album->name.' se borro de forma exitosa');
+        Album::eliminarAlbum($id);
         return redirect()->route('admin.albumes.index');
     }
 }
