@@ -1,3 +1,19 @@
+## Proyecto desarrollado en Laravel 5.3
+## Para comenzar
+
+Para comenzar debemos instalar xampp [xampp website](https://www.apachefriends.org/es/index.html).
+En el momento se desarrollo con la versión de xampp:
+Windows Version:  Pro  64-bit
+XAMPP Version: 7.1.10
+Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+
+Luego de haber instalado xampp procedemos con la instalación de composer [composer website](https://getcomposer.org/download/)
+
+Abrimmos en windows XAMPP Control Panel e iniciamos los servicios de Apache y MySQL, luego movemos el proyecto a la direccion c:/xampp/htdocs, cambiamos el nombre de galeria-master por galeria, despues ingresamos por el navegador de preferencia Google Chrome a localhost/phpmyadmin y creamos una base de datos que se llame galeria, si deseamos cambiar la configuracion básica del servidor podemos entrar en el archivo .env y modificarlo como se desee.
+
+Desde la consola de comandos nos dirigimos a la direccion donde esta el proyecto galeria en xampp/htdocs y escribimos el siguiente comando para comenzar las migraciones: php artisan migrate, esperamos que termine y luego podremos entrar con normalidad al proyecto desde la direccion localhost/galeria/public en el navegador.
+Primero creamos un usuario y luego vamos a la base de datos y cambiamos el dato tipo en la tabla users type a admin para dar permisos de administrador y asi poder gozar del panel de administración, si no se hace esto entonces se tiene acceso como usuario normal tipo miembro y se podran crear albumes e ingresar imagenes, en este caso se dan acceso de vista a todos los albumes de otros miembros, si se crean un usuario premium se podra tener acceso a los albumes de miembros y de otros usuarios premium, si es admin tiene acceso a todo.
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
