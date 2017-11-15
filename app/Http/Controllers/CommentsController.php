@@ -42,16 +42,8 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-
-        $com = new Comment();
-        $com->comment = $request->comentario;
-        $com->id_owner = \Auth::user()->id;
-        $com->id_album = $request->album;
-        $orden = DB::table('album_image')->select('orderNumber')->where('id_album',$request->album)->where('id_image',$request->image)->get();
-        $com->orderNumber = $orden[0]->orderNumber;
+        Comment::crearComentario($request);
         
-        $com->save();
-        Flash::success('La imagen ha sido comentada con exito!');
         return redirect()->route('admin.comments.comentarios', [$request->image, $request->album]);
     }
 
@@ -104,12 +96,7 @@ class CommentsController extends Controller
     {
         $album = Album::find($id_album);
         $image = Image::find($id_image);
-        $orden = DB::table('album_image')->select('orderNumber')->where('id_album',$id_album)->where('id_image',$id_image)->get();
-        //$comentarios = Comment::where('id_album', $album)->where('orderNumber',$orden[0]->orderNumber)->orderBy('id', 'ASC')->get()->lists('comment', 'id_owner');
-        $comentarios = DB::table('comments')->join('users','comments.id_owner','=','users.id')->select('comments.*','users.*')->where('comments.id_album', $id_album)->where('comments.orderNumber',$orden[0]->orderNumber)->orderBy('comments.id', 'ASC')->get();
-    
-
-        
+        $comentarios = Comment::traerComentarios($id_album,$id_image);
         return view('admin.comments.index', ['image' => $image, 'album' => $album,'comentarios' => $comentarios]);
     }
 }
