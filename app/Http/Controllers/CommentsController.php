@@ -16,7 +16,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+      
     }
 
     /**
@@ -83,5 +83,10 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function comentarios($id_image, $id_album)
+    {
+        dd($id_album);
     }
 }

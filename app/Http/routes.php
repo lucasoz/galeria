@@ -49,12 +49,18 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function(){
 		'as'   =>'admin.images.ChangeOrderNumber'
 		]);
 
-	
 	Route::resource('images', 'ImagesController');
 	Route::post('images/Number',[
 		'uses' => 'ImagesController@Number',
 		'as'   =>'admin.images.Number'
 		]);
+
+	Route::resource('comments', 'CommentsController');
+	Route::get('comments/comentarios/{id_image}/{id_album}',[
+		'uses' => 'CommentsController@comentarios',
+		'as'   =>'admin.comments.comentarios'
+		]);
+
 });
 
 
