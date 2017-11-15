@@ -1,4 +1,8 @@
-## Proyecto desarrollado en Laravel 5.3
+## Autores: Lucas Esteban Muñoz Montes - Alejandro Herrera Patiño  
+
+Curso: Seguridad Web - Universidad Nacional de Colombia sede Medellin
+Proyecto desarrollado en Laravel 5.3
+
 ## Para comenzar
 
 Para comenzar debemos instalar xampp [xampp website](https://www.apachefriends.org/es/index.html).
