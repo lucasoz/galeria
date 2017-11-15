@@ -16,7 +16,7 @@
 						<div class="text-right">
 							<!--  -->
 							<a href="{{ route('admin.comments.comentarios', [$image->id, $album->id])}}" class="btn btn-info">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+							<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
 							</a>
 							@if(Auth::user()->type == "admin" || Auth::user()->id == $image->id_owner)
 							<a href="{{ route('admin.images.edit', $image->id)}}" class="btn btn-warning">
