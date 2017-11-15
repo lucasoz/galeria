@@ -5,7 +5,6 @@
 	<a href="{{ route('admin.users.create') }}" class="btn btn-info">Crear Usuario</a><hr>
 	<table class="table table.striped">
 		<thead>
-			<th>Avatar</th>
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Nickname</th>
@@ -16,7 +15,7 @@
 		<tbody>
 			@foreach($users as $user)
 				<tr>
-					<td>{{ $user->avatar }}</td>
+					
 					<td>{{ $user->id }}</td>
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->nickname }}</td>

@@ -18,7 +18,6 @@ class CreateImageTable extends Migration
             $table->string('route');
             $table->string('description');
             $table->string('title',50);
-            $table->string('comments');
             $table->timestamps();
 
             $table->foreign('id_owner')->references('id')->on('users')->onDelete('cascade');

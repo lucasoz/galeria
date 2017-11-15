@@ -12,7 +12,7 @@ class Image extends Model
 {
     protected $table = 'image';
 
-    protected $filleable = ['id', 'id_owner', 'route', 'description', 'title', 'comments'];
+    protected $filleable = ['id', 'id_owner', 'route', 'description', 'title'];
 
     public function albums(){
     	return $this -> belongsToMany('App\Album')->withTimestamps();
@@ -41,7 +41,6 @@ class Image extends Model
         $image->id_owner = $id_owner; 
         $image->description = $request->description;
         $image->title = $request->title;
-        $image->comments = $request->comments;
         $image->save();
         
         //hacer aquí el foreach
@@ -67,7 +66,6 @@ class Image extends Model
         //también se puede usar $user->fill($request->all());
         $image->description = $request->description;
         $image->title = $request->title;
-        $image->comments = $request->comments;
         $image->save();
         Flash::warning('La imagen '.$image->title.' ha sido editada con exito!');
     }

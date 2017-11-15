@@ -18,10 +18,6 @@
 			{!! Form::file('image')!!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('comments', 'Comentarios') !!}
-			{!! Form::text('comments',null, ['class'=>'form-control',])!!}
-		</div>
-		<div class="form-group">
 			{!! Form::label('albumes_id', 'Albumes') !!}
 			{!! Form::select('albumes_id[]', $albumes, null, ['class' => 'form-control select-album', 'multiple', 'required'])!!}
 		</div>

@@ -14,10 +14,6 @@
 			{!! Form::text('title',$image->title, ['class'=>'form-control','required'])!!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('comments', 'Comentarios') !!}
-			{!! Form::text('comments',$image->commets, ['class'=>'form-control',])!!}
-		</div>
-		<div class="form-group">
 			{!! Form::submit('Terminar Edición', ['class' => 'btn btn-primary'])!!}
 		</div>
 	{!! Form::close() !!}
