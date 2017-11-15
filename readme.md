@@ -1,6 +1,7 @@
 ## Autores: Lucas Esteban Muñoz Montes - Alejandro Herrera Patiño  
 
 Curso: Seguridad Web - Universidad Nacional de Colombia sede Medellin
+
 Proyecto desarrollado en Laravel 5.3
 
 ## Para comenzar
@@ -11,7 +12,7 @@ Windows Version:  Pro  64-bit
 XAMPP Version: 7.1.10
 Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
 
-Luego de haber instalado xampp procedemos con la instalación de composer [composer website](https://getcomposer.org/download/)
+Luego de haber instalado xampp procedemos con la instalación de composer [composer website](https://getcomposer.org/download/).
 
 Abrimmos en windows XAMPP Control Panel e iniciamos los servicios de Apache y MySQL, luego movemos el proyecto a la direccion c:/xampp/htdocs, cambiamos el nombre de galeria-master por galeria, despues ingresamos por el navegador de preferencia Google Chrome a localhost/phpmyadmin y creamos una base de datos que se llame galeria, si deseamos cambiar la configuracion básica del servidor podemos entrar en el archivo .env y modificarlo como se desee.
 
